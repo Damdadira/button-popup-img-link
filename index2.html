@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <style>
+            button {
+                width: 200px;
+                height: 200px;
+            }
+
+            /* popup css */
+            .popup .overlay {
+                position: fixed;
+                top: 0px;
+                left: 0px;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.7);
+                z-index: 1;
+                display: none;
+            }
+
+            .popup .popup_contents {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(0);
+                background: #fff;
+                width: 450px;
+                height: 220px;
+                z-index: 2;
+                text-align: center;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+
+            .popup .popup_closeBtn {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                width: 30px;
+                height: 30px;
+                background: #222;
+                color: #fff;
+                font-size: 25px;
+                font-weight: 600;
+                line-height: 30px;
+                text-align: center;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            .popup.active .overlay {
+                display: block;
+            }
+
+            .popup.active .popup_contents {
+                transition: all 300ms ease-in-out;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            /* footer css */
+            #wrapper {
+                height: auto;
+                min-height: 100%;
+                padding-bottom: 24px;
+            }
+
+            footer {
+                height: 24px;
+                position: relative;
+                /* transform: translateY(-100%); */
+                bottom: 0;
+                background-color: #222;
+                color: #fff;
+            }
+
+            html {
+                border: 1px solid red;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            /* html,
+            body {
+                height: 100%;
+            } */
+        </style>
+
+        <div id="wrapper">
+            <!-- button link(새창으로 열리게)  -->
+            <button
+                onclick="javascript:newin=window.open('about:blank'); newin.location.href='http://naver.com';"
+                style="cursor: pointer"
+            >
+                click
+            </button>
+
+            <!-- img link(바로 열리게) -->
+            <img
+                onclick="javascript:location.href='http://naver.com';"
+                style="cursor: pointer"
+                src="/images.jpeg"
+            />
+
+            <!-- img popup  -->
+            <div class="popup" id="popup">
+                <div class="overlay"></div>
+                <div class="popup_contents">
+                    <div class="popup_closeBtn" onclick="togglePopup()">
+                        &times;
+                    </div>
+                    <h1>Loding</h1>
+                    <p>Checking the System</p>
+                </div>
+            </div>
+
+            <button onclick="togglePopup()" style="cursor: pointer">
+                popup button
+            </button>
+        </div>
+
+        <!-- footer -->
+        <footer>
+            <div>개인정보 처리 보호</div>
+        </footer>
+
+        <script>
+            function togglePopup() {
+                document.getElementById("popup").classList.toggle("active");
+            }
+        </script>
+    </body>
+</html>
