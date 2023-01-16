@@ -112,7 +112,7 @@
             />
 
             <!-- img popup  -->
-            <div class="popup" id="popup">
+            <div class="popup" id="popup1">
                 <div class="overlay"></div>
                 <div class="popup_contents">
                     <div class="popup_closeBtn" onclick="togglePopup()">
@@ -123,20 +123,51 @@
                 </div>
             </div>
 
-            <button onclick="togglePopup()" style="cursor: pointer">
+            <div class="popup" id="popup2">
+                <div class="overlay"></div>
+                <div class="popup_contents">
+                    <div class="popup_closeBtn" onclick="togglePopup()">
+                        &times;
+                    </div>
+                    <h1>Loding</h1>
+                    <p>Checking the System</p>
+                </div>
+            </div>
+
+            <div class="popup" id="popup3">
+                <div class="overlay"></div>
+                <div class="popup_contents">
+                    <div class="popup_closeBtn" onclick="togglePopup()">
+                        &times;
+                    </div>
+                    <h1>Loding</h1>
+                    <p>Checking the System</p>
+                </div>
+            </div>
+
+            <button onclick="togglePopup('popup1')" style="cursor: pointer">
+                popup button
+            </button>
+            <button onclick="togglePopup('popup2')" style="cursor: pointer">
+                popup button
+            </button>
+            <button onclick="togglePopup('popup3')" style="cursor: pointer">
                 popup button
             </button>
         </div>
 
-        <!-- footer -->
-        <footer>
-            <div>개인정보 처리 보호</div>
-        </footer>
-
         <script>
+            let popupOpen = document.querySelector(".popup");
+
             function togglePopup() {
-                document.getElementById("popup").classList.toggle("active");
+                popupOpen.classList.toggle("active");
             }
+
+            window.onclick = function (event) {
+                if (event.target.parentNode == popupOpen) {
+                    popupOpen.classList.remove("active");
+                }
+            };
         </script>
     </body>
 </html>
